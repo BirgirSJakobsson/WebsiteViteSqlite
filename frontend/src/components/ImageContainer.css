@@ -1,0 +1,124 @@
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.image-container.bg-black {
+  background-color: var(--bg-black);
+}
+
+.image-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-heading {
+  margin-top: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #000000 !important;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  max-width: 90%;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-rendering: optimizeLegibility;
+}
+
+.image-date {
+  color: #000000 !important;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 0.25rem;
+  font-style: italic;
+  opacity: 1;
+}
+
+/* Border Styles */
+.default-border {
+  border: 2px solid #4a4a4a;
+}
+
+.rounded-border {
+  border: 2px solid #4a4a4a;
+  border-radius: 15px;
+}
+
+.sharp-border {
+  border: 2px solid #000;
+}
+
+.dashed-border {
+  border: 2px dashed #4a4a4a;
+}
+
+/* Background Styles */
+.default-background {
+  background-color: #f4f4f4;
+}
+
+.light-background {
+  background-color: #ffffff;
+}
+
+.dark-background {
+  background-color: #333;
+  color: #fff;
+}
+
+.accent-background {
+  background-color: #e0e0e0;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.image-item {
+  flex: 0 1 calc(33.333% - 15px);
+  max-width: calc(33.333% - 15px);
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.image-item:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .image-item {
+    flex: 0 1 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-item {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}

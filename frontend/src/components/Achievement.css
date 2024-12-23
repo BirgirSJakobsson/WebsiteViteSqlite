@@ -1,0 +1,43 @@
+.achievement {
+  display: flex;
+  align-items: center;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.achievement.not-achieved {
+  opacity: 0.6;
+}
+
+.achievement-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.achievement-content {
+  flex-grow: 1;
+}
+
+.achievement-content h3 {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+
+.achievement-content p {
+  margin: 0 0 5px 0;
+  color: #666;
+}
+
+.achievement-date {
+  font-size: 0.8em;
+  color: #999;
+}

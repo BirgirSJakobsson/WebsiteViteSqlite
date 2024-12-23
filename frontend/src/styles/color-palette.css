@@ -1,0 +1,14 @@
+/* Simplified Color Palette */
+:root {
+  /* Background Colors */
+  --bg-white: #ffffff;
+  --bg-black: #000000;
+
+  /* Text Colors */
+  --text-primary: #000000;
+}
+
+body {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+}
