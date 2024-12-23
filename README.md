@@ -1,25 +1,25 @@
-# Family Website Project
+# WebsiteViteSqlite Project
 
 ## 🚀 Project Overview
-A comprehensive web application for family memories, achievements, and connections.
+A web application built with Vite, React, and SQLite.
 
 ## 📂 Project Structure
-- `frontend/`: React.js frontend application
-- `backend/`: Express.js backend server
-- `venv/`: Python virtual environment
+- `frontend/`: Vite + React frontend application
+- `backend/`: Backend application (likely Python-based)
+- `venv/`: Python virtual environment for backend dependencies
 
 ## 🛠 Prerequisites
 - Node.js (v16+ recommended)
 - npm
 - Python 3.8+
-- MongoDB
+- SQLite
 
 ## 🔧 Initial Setup
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/family-website.git
-cd family-website
+git clone https://github.com/BirgirSJakobsson/WebsiteViteSqlite.git
+cd WebsiteViteSqlite
 ```
 
 ### 2. Set Up Virtual Environment
@@ -39,44 +39,24 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Backend Setup
-```bash
-cd backend
-npm install
-```
-
-### 5. Frontend Setup
-```bash
-cd ../frontend
-npm install
-```
-
-### 6. Environment Configuration
-- Create `.env` files in both `backend/` and `frontend/` directories
-- Add necessary environment variables (see respective README files)
-
-## 🏃 Running the Application
-
-### Start Backend Server
-```bash
-cd backend
-npm run dev
-```
-
-### Start Frontend Development Server
+### 4. Frontend Setup
 ```bash
 cd frontend
-npm run dev
+npm install
 ```
 
-## 🔒 Environment Variables
-- Backend: Configure in `backend/.env`
-  - `PORT`: Backend server port
-  - `MONGODB_URI`: MongoDB connection string
-  - `JWT_SECRET`: Secret for JWT authentication
+### 5. Run the Application
+```bash
+# Start frontend (from frontend/ directory)
+npm run dev
 
-- Frontend: Configure in `frontend/.env`
-  - Add any frontend-specific environment variables
+# Start backend (from backend/ directory)
+# Add specific backend start command here
+```
+
+## 📝 Notes
+- Ensure all prerequisites are installed before setup
+- Check individual README files in frontend and backend directories for specific instructions
 
 ## 🤝 Contributing
 1. Fork the repository
