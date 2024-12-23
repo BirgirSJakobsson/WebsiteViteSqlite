@@ -1,0 +1,4 @@
+# Python project dependencies
+# Add Python packages here as needed
+flask==2.1.0
+requests==2.26.0

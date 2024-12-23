@@ -1,0 +1,44 @@
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  gap: 10px;
+}
+
+.social-link:hover {
+  transform: scale(1.05);
+}
+
+.social-link svg {
+  width: 30px;
+  height: 30px;
+}
+
+.social-link.github svg {
+  color: #333;
+}
+
+.social-link.linkedin svg {
+  color: #0077B5;
+}
+
+.social-link.twitter svg {
+  color: #1DA1F2;
+}
+
+.social-link.instagram svg {
+  color: #E1306C;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .dashboard-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .component-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input, select, textarea {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #componentList {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        
+        <form id="componentForm" class="component-form">
+            <h2>Create New Component</h2>
+            <select id="componentType" required>
+                <option value="">Select Component Type</option>
+                <option value="Achievement">Achievement</option>
+                <option value="SocialLink">Social Link</option>
+                <option value="ImageContainer">Image Container</option>
+            </select>
+            
+            <input type="text" id="title" placeholder="Title" required>
+            <textarea id="description" placeholder="Description"></textarea>
+            <input type="text" id="imageUrl" placeholder="Image URL (optional)">
+            <input type="text" id="link" placeholder="Link (optional)">
+            
+            <button type="submit">Create Component</button>
+        </form>
+
+        <div id="componentList">
+            <h2>Existing Components</h2>
+            <ul id="components"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        const token = localStorage.getItem('adminToken');
+        if (!token) {
+            window.location.href = '/';
+        }
+
+        const componentForm = document.getElementById('componentForm');
+        const componentList = document.getElementById('components');
+
+        // Fetch and display existing components
+        async function fetchComponents() {
+            try {
+                const response = await fetch('/api/components', {
+                    headers: {
+                        'x-auth-token': token
+                    }
+                });
+                const components = await response.json();
+                
+                componentList.innerHTML = components.map(component => `
+                    <li>
+                        ${component.title} (${component.type}) 
+                        <button onclick="deleteComponent('${component._id}')">Delete</button>
+                    </li>
+                `).join('');
+            } catch (error) {
+                console.error('Error fetching components:', error);
+            }
+        }
+
+        // Create new component
+        componentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const componentData = {
+                type: document.getElementById('componentType').value,
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                imageUrl: document.getElementById('imageUrl').value,
+                link: document.getElementById('link').value
+            };
+
+            try {
+                const response = await fetch('/api/components', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': token
+                    },
+                    body: JSON.stringify(componentData)
+                });
+
+                if (response.ok) {
+                    fetchComponents();
+                    componentForm.reset();
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Failed to create component');
+                }
+            } catch (error) {
+                console.error('Error creating component:', error);
+            }
+        });
+
+        // Delete component
+        async function deleteComponent(id) {
+            try {
+                const response = await fetch(`/api/components/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'x-auth-token': token
+                    }
+                });
+
+                if (response.ok) {
+                    fetchComponents();
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Failed to delete component');
+                }
+            } catch (error) {
+                console.error('Error deleting component:', error);
+            }
+        }
+
+        // Initial fetch of components
+        fetchComponents();
+    </script>
+</body>
+</html>
